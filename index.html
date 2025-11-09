@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytFFLl5Lpcl0PInTsVNvypwcdlP7M5YEK5CVQqHxQq3TTPYWkeMH701JpIa5Yd-Rs/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_ENG_07 = [
+    {
+        question: "A eukaryotic cell line exhibits hypersensitivity to DNA double-strand breaks but surprisingly normal repair of interstrand crosslinks. A mutation in which protein would most directly explain this phenotype?",
+        options: [
+            "BRCA1",
+            "XPC",
+            "FANCJ",
+            "Rad51"
+        ],
+        correctAnswer: 0,
+        reasoning: "BRCA1 is a key component in homologous recombination (HR), the primary pathway for repairing double-strand breaks (DSBs). While also involved in the Fanconi Anemia pathway, its dominant role in DSB repair makes its defect highly impactful. XPC is involved in nucleotide excision repair, primarily for bulky lesions like UV damage. FANCJ (BRIP1) is a helicase in the Fanconi Anemia pathway, crucial for interstrand crosslink repair, so a defect would impair ICL repair, contrary to the phenotype. Rad51 is also essential for HR, but BRCA1 acts upstream as a scaffold; its dysfunction would broadly affect DSB repair without necessarily implicating ICLs distinctly from HR given its diverse roles."
+    },
+    {
+        question: "Which scenario *least* suggests an epigenetic mechanism is primarily responsible for a stable, heritable phenotypic change across generations?",
+        options: [
+            "Methylation patterns differing between monozygotic twins discordantly affected by a disease.",
+            "A transgenerational effect where offspring phenotypes correlate with grandparental diet, despite no direct parental exposure.",
+            "A locus exhibiting Mendelian inheritance for a dominant trait, yet environmental factors modulate its penetrance.",
+            "Paramutation in maize, where one allele stably induces a heritable change in another without altering its sequence."
+        ],
+        correctAnswer: 2,
+        reasoning: "Mendelian inheritance, even with variable penetrance due to environmental factors, primarily points to genetic (sequence-based) inheritance, not epigenetic. While environment can influence epigenetics, the primary mechanism of trait transmission here is genetic. Methylation differences in twins, transgenerational effects independent of direct exposure, and paramutation are all strong indicators of epigenetic inheritance, involving stable, heritable changes in gene expression without DNA sequence alteration."
+    },
+    {
+        question: "An obligate anaerobic bacterium, previously grown in anoxic conditions, is suddenly exposed to atmospheric oxygen. Which immediate cellular defense mechanism is *least* effective in mitigating oxidative damage under these new conditions?",
+        options: [
+            "Activation of superoxide dismutase (SOD) to convert superoxide radicals.",
+            "Production of catalase to decompose hydrogen peroxide.",
+            "Induction of reactive oxygen species (ROS) scavenging enzymes.",
+            "Synthesis of cytochromes for oxidative phosphorylation."
+        ],
+        correctAnswer: 3,
+        reasoning: "Obligate anaerobes typically lack robust oxidative phosphorylation systems and, more importantly, are harmed by oxygen. Their primary defense mechanisms against oxidative stress involve enzymes like SOD and catalase, or other ROS scavengers, which directly detoxify reactive oxygen species. Synthesis of cytochromes for oxidative phosphorylation is a characteristic of aerobic respiration and would not be an immediate or effective defense mechanism for an obligate anaerobe against oxygen toxicity; in fact, the processes associated with oxygen would be detrimental."
+    },
+    {
+        question: "A novel virus replicates exclusively within the nucleus of mammalian cells, producing a polycistronic RNA from its positive-sense RNA genome. Which host cellular machinery is *most likely* to be hijacked for its genome replication?",
+        options: [
+            "Host DNA-dependent RNA polymerase I",
+            "Host DNA-dependent RNA polymerase II",
+            "Host RNA-dependent RNA polymerase",
+            "Host DNA polymerase delta"
+        ],
+        correctAnswer: 1,
+        reasoning: "The description of a positive-sense RNA virus replicating exclusively within the nucleus and producing polycistronic RNA is highly unusual for typical RNA viruses, which usually replicate in the cytoplasm using a viral RNA-dependent RNA polymerase. However, this scenario strongly suggests a viral lifecycle similar to retroviruses. Retroviruses, after reverse transcribing their positive-sense RNA genome into DNA, integrate this DNA (provirus) into the host genome. Subsequently, the host's DNA-dependent RNA polymerase II transcribes the proviral DNA to produce new viral RNAs, which serve as both messenger RNAs (polycistronic) and new genomic RNAs. This is the most plausible host machinery to be hijacked for 'genome replication' (in the sense of generating new viral RNAs from the integrated provirus) within the nucleus, given the options and the specific description."
+    },
+    {
+        question: "A newly discovered bacterial species exhibits robust growth on diverse carbon sources. Metabolomic analysis reveals a unique variant of the TCA cycle where a single enzyme catalyzes the reversible conversion of succinate to succinyl-CoA. What is the *most direct* bioenergetic implication of this altered pathway, compared to the standard TCA cycle?",
+        options: [
+            "Increased net ATP yield per glucose molecule.",
+            "Reduced requirement for substrate-level phosphorylation.",
+            "Bypassed requirement for a FAD-dependent dehydrogenase.",
+            "Enhanced carbon flux through gluconeogenesis."
+        ],
+        correctAnswer: 2,
+        reasoning: "In the standard TCA cycle, succinate is converted to fumarate by succinate dehydrogenase (complex II), which is FAD-dependent. The question describes a *direct* reversible conversion of succinate to succinyl-CoA. This step in the standard cycle is usually catalyzed by succinyl-CoA synthetase (from succinyl-CoA to succinate), and then succinate is converted to fumarate. If succinate can be directly converted to succinyl-CoA, it effectively bypasses the succinate dehydrogenase step (which is FAD-dependent) and fumarase. Therefore, the most direct implication is a bypassed requirement for a FAD-dependent dehydrogenase at this specific part of the cycle."
+    },
+    {
+        question: "Myasthenia gravis is an autoimmune disease characterized by antibodies against the nicotinic acetylcholine receptor (nAChR) at the neuromuscular junction. Which intervention would *least likely* offer therapeutic benefit for muscle weakness?",
+        options: [
+            "Administration of a reversible acetylcholinesterase inhibitor.",
+            "Immunosuppression targeting B cell activity.",
+            "Surgical removal of the thymus gland.",
+            "Pharmacological activation of postsynaptic muscarinic acetylcholine receptors."
+        ],
+        correctAnswer: 3,
+        reasoning: "Myasthenia gravis affects the nicotinic acetylcholine receptors at the neuromuscular junction, responsible for muscle contraction. Muscarinic acetylcholine receptors are primarily found in the autonomic nervous system (e.g., heart, smooth muscle, glands) and the central nervous system, not the neuromuscular junction. Activating muscarinic receptors would not compensate for the deficiency of functional nAChRs at the neuromuscular junction, and could have adverse systemic effects. Acetylcholinesterase inhibitors increase acetylcholine levels at the synapse, allowing more binding to remaining nAChRs. Immunosuppression and thymectomy aim to reduce antibody production, addressing the root cause of the autoimmune attack."
+    },
+    {
+        question: "In the context of G-protein coupled receptor (GPCR) signaling, which mechanism *most precisely* dictates the specificity of the cellular response among diverse tissues expressing the same receptor?",
+        options: [
+            "Differential expression patterns of GPCR subtypes.",
+            "Ligand binding affinity and receptor desensitization rates.",
+            "Specificity of G-protein alpha subunits for various effector enzymes.",
+            "Combinatorial usage and spatiotemporal localization of scaffolding proteins."
+        ],
+        correctAnswer: 3,
+        reasoning: "While differential expression, binding affinity/desensitization, and G-protein alpha subunit specificity all contribute to signaling diversity, the *most precise* and finely-tuned mechanism for dictating tissue-specific responses from the *same* receptor is the context-dependent assembly of downstream signaling complexes. Scaffolding proteins precisely localize and organize specific sets of effectors, kinases, and phosphatases, creating distinct signaling outcomes even if the initial receptor and G-protein are identical across tissues. This allows for 'biased agonism' and highly context-specific responses."
+    },
+    {
+        question: "A bacterial species capable of both aerobic respiration and fermentation is grown under anaerobic conditions with abundant glucose. Upon sudden exposure to oxygen, its rate of glucose consumption significantly decreases, despite continued growth. This phenomenon is best explained by:",
+        options: [
+            "Accumulation of toxic reactive oxygen species.",
+            "Transcriptional repression of glycolytic enzymes.",
+            "The Pasteur effect, prioritizing ATP yield over substrate flux.",
+            "Feedback inhibition of phosphofructokinase by citrate."
+        ],
+        correctAnswer: 2,
+        reasoning: "This describes the Pasteur effect. Under anaerobic conditions, cells must consume large amounts of glucose to generate sufficient ATP via fermentation. When oxygen becomes available, aerobic respiration (which is much more efficient at ATP production) can proceed. The cell can then generate the same amount of ATP with much less glucose, leading to a decrease in glucose consumption. Options 0, 1, and 3 are plausible regulatory mechanisms or consequences but don't *best* explain the specific shift in glucose consumption rate from anaerobic to aerobic conditions under the context of continued growth, which is the hallmark of the Pasteur effect."
+    },
+    {
+        question: "Which type of mutation in a tumor suppressor gene would *most consistently* lead to a loss-of-function phenotype, even if the normal allele is still present and functional?",
+        options: [
+            "A missense mutation altering catalytic activity.",
+            "A nonsense mutation introducing a premature stop codon.",
+            "A silent mutation within an intron.",
+            "A dominant-negative mutation affecting protein complex formation."
+        ],
+        correctAnswer: 3,
+        reasoning: "Tumor suppressor genes typically require both alleles to be inactivated (two-hit hypothesis) for a loss-of-function phenotype, as they often produce proteins that regulate cell growth. However, a dominant-negative mutation produces a faulty protein that not only loses its own function but also actively interferes with the function of the protein produced by the normal allele (e.g., by forming non-functional multimers). This 'poisons' the cellular machinery, leading to a loss-of-function phenotype even with one wild-type allele present."
+    },
+    {
+        question: "In human embryonic development, a mutation causes aberrant migration of neural crest cells, leading to severe craniofacial defects and pigmentation abnormalities. Which cellular process is *most fundamentally* compromised?",
+        options: [
+            "Epithelial-mesenchymal transition (EMT) initiation.",
+            "Apoptosis-mediated tissue remodeling.",
+            "Specification of neural plate borders.",
+            "Differentiation of somatic mesoderm."
+        ],
+        correctAnswer: 0,
+        reasoning: "Neural crest cells undergo a crucial epithelial-mesenchymal transition (EMT) to delaminate from the neural tube and migrate throughout the embryo. This transition from a tightly adherent epithelial state to a migratory mesenchymal state is fundamental for their migration and subsequent differentiation into diverse cell types, including those forming craniofacial structures and melanocytes (pigmentation). While apoptosis is important for development, it's not the primary defect affecting migration. Neural plate border specification precedes EMT. Somatic mesoderm differentiation is a distinct lineage process."
+    },
+    {
+        question: "Which scenario involving molecular chaperones would be *most detrimental* to a cell's overall proteostasis network?",
+        options: [
+            "Selective inhibition of Hsp90's ATPase activity.",
+            "Constitutive upregulation of small heat shock proteins (sHSPs).",
+            "Disruption of the cellular ubiquitin-proteasome system.",
+            "A mutation preventing Hsp70's co-chaperone binding."
+        ],
+        correctAnswer: 2,
+        reasoning: "The ubiquitin-proteasome system (UPS) is the primary pathway for degrading misfolded or damaged proteins. Its disruption would lead to a massive accumulation of toxic protein aggregates, severely impairing proteostasis and cellular function. While inhibition of Hsp90 (a specific chaperone for client proteins like kinases) or issues with Hsp70 co-chaperone binding would be deleterious, they represent problems with specific chaperone pathways. Upregulation of sHSPs can actually be protective by binding to misfolded proteins. The UPS is a core degradative pathway; its failure would be broadly catastrophic."
+    },
+    {
+        question: "A patient presents with recurrent viral infections, despite seemingly normal B cell development and antibody production. Further investigation reveals that T cells are present but fail to recognize viral antigens presented on infected cells. Which component of the antigen presentation pathway is *most likely* defective?",
+        options: [
+            "MHC Class I expression.",
+            "MHC Class II expression.",
+            "TAP protein function.",
+            "Invariant chain processing."
+        ],
+        correctAnswer: 0,
+        reasoning: "T cells failing to recognize viral antigens on *infected cells* points directly to a defect in cytotoxic T lymphocyte (CTL) activation. CTLs recognize viral antigens presented by MHC Class I molecules. MHC Class I presents endogenous antigens (like viral proteins synthesized within the cell) to CD8+ T cells. While TAP proteins load peptides onto MHC Class I, and their defect would lead to reduced MHC I presentation, the problem is more broadly about MHC Class I *expression/function*. MHC Class II is for exogenous antigens presented to CD4+ T helper cells. Invariant chain processes MHC Class II in the endosome. Thus, direct MHC Class I expression is the most encompassing and direct cause of this specific T cell failure."
+    },
+    {
+        question: "Which characteristic is *most universally* indicative of an organism utilizing photorespiration, rather than being a diagnostic feature of C3, C4, or CAM photosynthesis?",
+        options: [
+            "Presence of bundle sheath cells.",
+            "Oxygenase activity of RuBisCO.",
+            "Stomatal closure during daytime.",
+            "Primary carbon fixation by PEP carboxylase."
+        ],
+        correctAnswer: 1,
+        reasoning: "Photorespiration is initiated by the oxygenase activity of the RuBisCO enzyme, where it binds O2 instead of CO2, producing phosphoglycolate. This is an inherent property of RuBisCO and occurs to varying degrees in C3, C4, and CAM plants, especially under high O2 and low CO2 concentrations or high temperatures. Bundle sheath cells are characteristic of C4 plants. Stomatal closure during daytime is characteristic of CAM plants. Primary carbon fixation by PEP carboxylase is characteristic of C4 and CAM plants. The oxygenase activity of RuBisCO is the fundamental enzymatic step defining photorespiration itself."
+    },
+    {
+        question: "The sustained contraction of vertebrate skeletal muscle requires constant replenishment of ATP. Beyond glycolysis and oxidative phosphorylation, which enzyme catalyzes the *most rapid* ATP regeneration, albeit transiently?",
+        options: [
+            "Adenylate kinase",
+            "Creatine kinase",
+            "Glycogen phosphorylase",
+            "Lactate dehydrogenase"
+        ],
+        correctAnswer: 1,
+        reasoning: "Creatine kinase rapidly phosphorylates ADP using phosphocreatine (creatine phosphate) as a high-energy phosphate donor, providing an immediate burst of ATP for muscle contraction. This system is crucial for buffering ATP levels during the initial seconds of intense activity. Adenylate kinase (myokinase) can generate ATP from two ADPs, but its capacity is lower. Glycogen phosphorylase is involved in glycogen breakdown, feeding glycolysis, not direct ATP regeneration. Lactate dehydrogenase is part of anaerobic glycolysis, not direct ATP buffering."
+    },
+    {
+        question: "A bacterial population develops resistance to an antibiotic that targets cell wall synthesis. Investigation reveals that the resistant strain now produces an altered peptidoglycan precursor with a novel D-amino acid. Which mechanism of antibiotic resistance is *most directly* exemplified?",
+        options: [
+            "Efflux pump upregulation.",
+            "Target modification.",
+            "Enzymatic inactivation.",
+            "Reduced membrane permeability."
+        ],
+        correctAnswer: 1,
+        reasoning: "The antibiotic targets cell wall synthesis, and the bacteria produce an altered peptidoglycan precursor. This means the *target* of the antibiotic (a component of the cell wall synthesis pathway) has been modified, making the antibiotic less effective at binding or inhibiting its action. Efflux pumps remove antibiotics, enzymatic inactivation chemically alters the antibiotic, and reduced membrane permeability prevents entry; none of these directly involve changing the structure of the antibiotic's cellular target."
+    },
+    {
+        question: "Which evolutionary scenario *least* aligns with the concept of an adaptive radiation?",
+        options: [
+            "A single ancestral species colonizes an island archipelago, diversifying into many niches.",
+            "Fossil evidence shows a rapid proliferation of new taxa following a mass extinction event.",
+            "A highly specialized parasite co-evolves with its host, resulting in mutual dependence.",
+            "The diversification of mammals into various forms after the extinction of non-avian dinosaurs."
+        ],
+        correctAnswer: 2,
+        reasoning: "Adaptive radiation involves rapid diversification of a single lineage into many new forms that occupy different ecological niches, often driven by new opportunities (e.g., colonization of new habitats, release from competition after extinction). Co-evolution of a highly specialized parasite and its host, while a form of evolution, typically leads to two interacting species becoming increasingly interdependent or specialized on each other, not necessarily a rapid proliferation of *many* new taxa into *diverse* niches from a single ancestral lineage. The other options directly describe hallmarks of adaptive radiation."
+    },
+    {
+        question: "A cell type normally relies on clathrin-mediated endocytosis for nutrient uptake. A novel mutation eliminates the pH gradient across endosomal membranes. What is the *most probable* long-term consequence for the cell's nutrient acquisition and recycling of receptors?",
+        options: [
+            "Enhanced receptor recycling due to faster dissociation from ligands.",
+            "Impaired nutrient release from receptors within endosomes.",
+            "Increased trafficking of nutrient receptors to lysosomes for degradation.",
+            "Accumulation of clathrin-coated vesicles at the plasma membrane."
+        ],
+        correctAnswer: 1,
+        reasoning: "The low pH within endosomes is crucial for many receptors (e.g., LDL receptor, transferrin receptor) to release their cargo (nutrients). If the pH gradient is eliminated, endosomes remain at neutral pH, preventing the dissociation of ligands from their receptors. This would impair nutrient release into the cytoplasm and also hinder receptor recycling, as receptors are often recycled after releasing their cargo. Option 0 is incorrect as dissociation would be impaired. Option 3 is an initial step in endocytosis, not a long-term consequence of endosomal pH. Option 2 might occur as a consequence of stalled recycling pathways, but impaired release is a more direct and immediate functional impact of losing the pH gradient."
+    },
+    {
+        question: "Which modification to histone proteins is *most directly* associated with the formation of constitutive heterochromatin?",
+        options: [
+            "Acetylation of lysine residues in H3 tails.",
+            "Methylation of H3K4 (lysine 4 of histone H3).",
+            "Methylation of H3K9 (lysine 9 of histone H3).",
+            "Phosphorylation of serine residues in H2A tails."
+        ],
+        correctAnswer: 2,
+        reasoning: "Methylation of H3K9 (lysine 9 of histone H3) is a hallmark of heterochromatin, particularly constitutive heterochromatin, and serves as a binding site for HP1 (heterochromatin protein 1), which further promotes chromatin compaction and gene silencing. Acetylation of histones (especially H3K9, H3K14, H4K8, K16) generally promotes euchromatin and gene activation. Methylation of H3K4 is associated with active gene promoters. Phosphorylation of serine residues can have various roles, including chromosome condensation in mitosis or DNA repair, but is not the most direct mark for constitutive heterochromatin formation."
+    },
+    {
+        question: "A researcher identifies a novel neurotransmitter receptor that, upon ligand binding, directly causes rapid efflux of potassium ions from the neuron. This receptor is *best* classified as:",
+        options: [
+            "An ionotropic receptor, primarily inhibitory.",
+            "An ionotropic receptor, primarily excitatory.",
+            "A metabotropic receptor, primarily inhibitory.",
+            "A metabotropic receptor, primarily excitatory."
+        ],
+        correctAnswer: 0,
+        reasoning: "A receptor that *directly* causes ion flux is an ionotropic receptor (ligand-gated ion channel). Potassium efflux (positive charge leaving the cell) leads to hyperpolarization or stabilization of the membrane potential below the threshold for firing, making it *primarily inhibitory*. Excitatory responses are typically caused by influx of positive ions (e.g., Na+ or Ca2+). Metabotropic receptors act indirectly via G-proteins or second messengers."
+    },
+    {
+        question: "Which statement about biological species concepts (BSC) is *most critically* problematic when applied to all forms of life?",
+        options: [
+            "It struggles with organisms exhibiting asexual reproduction.",
+            "It overemphasizes pre-zygotic isolating mechanisms.",
+            "It cannot differentiate between cryptic species.",
+            "It requires extensive genetic sequencing data."
+        ],
+        correctAnswer: 0,
+        reasoning: "The biological species concept defines a species as a group of individuals that can interbreed and produce fertile offspring. This definition is fundamentally based on sexual reproduction and reproductive isolation. Therefore, it is *most critically* problematic and essentially inapplicable to organisms that reproduce asexually (e.g., many bacteria, archaea, some plants and fungi), as they do not form interbreeding populations in the same way. While it can struggle with cryptic species (genetically distinct but morphologically similar) and doesn't explicitly rely on sequencing (though modern techniques aid it), its core definition breaks down for asexual life forms."
+    },
+    {
+        question: "An environmental toxicant is found to specifically inhibit protein disulfide isomerase (PDI). Which cellular compartment would experience the *most immediate and severe* accumulation of misfolded proteins?",
+        options: [
+            "Mitochondrial intermembrane space",
+            "Cytosol",
+            "Endoplasmic reticulum lumen",
+            "Peroxisomal matrix"
+        ],
+        correctAnswer: 2,
+        reasoning: "Protein disulfide isomerase (PDI) is a crucial enzyme located in the endoplasmic reticulum (ER) lumen. Its primary role is to catalyze the formation, reduction, and rearrangement of disulfide bonds during protein folding in the ER. Inhibition of PDI would directly and severely impair the proper folding of proteins that require disulfide bonds, leading to their accumulation in the ER lumen, triggering ER stress. Other compartments are not primary sites for disulfide bond formation."
+    },
+    {
+        question: "A population of plants demonstrates continuous variation in flower color, controlled by multiple genes. A significant portion of the population suddenly experiences an allele frequency shift towards darker flowers due to increased pollinator preference for darker hues. This describes a classic example of:",
+        options: [
+            "Stabilizing selection.",
+            "Disruptive selection.",
+            "Directional selection.",
+            "Genetic drift."
+        ],
+        correctAnswer: 2,
+        reasoning: "Directional selection occurs when individuals at one extreme of a phenotypic range have greater fitness, leading to a shift in the population mean towards that extreme. In this case, darker flowers are preferred, causing the population to shift towards darker hues. Stabilizing selection favors intermediate phenotypes. Disruptive selection favors both extremes over intermediates. Genetic drift is random change in allele frequencies, not due to consistent selective pressure."
+    },
+    {
+        question: "Which cellular component's dysfunction would *most directly* lead to an inability to remove specific organelles that are damaged or dysfunctional, rather than general protein aggregates?",
+        options: [
+            "Proteasome",
+            "Lysosome",
+            "Peroxisome",
+            "Autophagosome"
+        ],
+        correctAnswer: 3,
+        reasoning: "The autophagosome is a key component of the autophagy pathway, a process specifically responsible for engulfing and delivering damaged organelles (like mitochondria via mitophagy, or peroxisomes via pexophagy) and large protein aggregates to the lysosome for degradation. The proteasome degrades individual ubiquitinated proteins, not whole organelles. The lysosome is the degradative compartment but doesn't *selectively* engulf the organelles itself; it receives autophagosomes. Peroxisomes are organelles themselves and are targets of degradation, not direct mediators of removing other organelles."
+    },
+    {
+        question: "The remarkable resistance of tardigrades to extreme desiccation is primarily attributed to the high intracellular concentrations of which type of macromolecule?",
+        options: [
+            "Heat shock proteins (HSPs)",
+            "Trehalose",
+            "Small RNAs (sRNAs)",
+            "Intrinsically disordered proteins (IDPs)"
+        ],
+        correctAnswer: 3,
+        reasoning: "While trehalose (a disaccharide) is well-known for protecting cells during desiccation in many organisms, recent research has highlighted the critical role of intrinsically disordered proteins (IDPs), specifically tardigrade-specific intrinsically disordered proteins (TDPs), in forming a protective glassy matrix that stabilizes cellular components during extreme desiccation. HSPs are general stress proteins. sRNAs have regulatory roles. The question specifically asks for a *macromolecule* and *primarily* attributed, pointing to the unique IDPs of tardigrades as a key recent discovery in their exceptional desiccation resistance."
+    },
+    {
+        question: "A genetic mutation causes a significant increase in the activity of telomerase in somatic cells. Which cellular phenomenon is the *most likely* consequence?",
+        options: [
+            "Premature cellular senescence.",
+            "Increased susceptibility to apoptosis.",
+            "Enhanced DNA damage repair efficiency.",
+            "Extended cellular replicative lifespan."
+        ],
+        correctAnswer: 3,
+        reasoning: "Telomerase is an enzyme that maintains telomere length. Telomeres shorten with each cell division, eventually triggering cellular senescence (replicative aging). Increased telomerase activity in somatic cells would counteract telomere shortening, thereby extending the cellular replicative lifespan and potentially contributing to cellular immortality, a hallmark of cancer. Premature senescence is caused by telomere shortening. Increased apoptosis or enhanced DNA damage repair are not direct or primary consequences of increased telomerase activity."
+    },
+    {
+        question: "Which mechanism of intercellular communication is *least* dependent on direct physical contact between cells?",
+        options: [
+            "Gap junctions.",
+            "Synaptic signaling.",
+            "Paracrine signaling.",
+            "Adherens junctions."
+        ],
+        correctAnswer: 2,
+        reasoning: "Paracrine signaling involves cells secreting signaling molecules (local mediators) that act on nearby target cells. The signaling cell and target cell do not need to be in direct physical contact, only in close proximity. Gap junctions and adherens junctions involve direct physical connection and communication channels. Synaptic signaling involves direct contact via specialized junctions (synapses) where neurotransmitters are released into a tiny synaptic cleft to act on the postsynaptic cell."
+    },
+    {
+        question: "A neuron's resting membrane potential is primarily established and maintained by which set of conditions and transporters?",
+        options: [
+            "High intracellular Na+, high extracellular K+, Na+/K+ ATPase, voltage-gated K+ channels.",
+            "High intracellular K+, high extracellular Na+, Na+/K+ ATPase, leak K+ channels.",
+            "High intracellular Na+, high extracellular K+, Na+/K+ ATPase, leak Na+ channels.",
+            "High intracellular K+, high extracellular Na+, Ca2+ ATPase, voltage-gated Na+ channels."
+        ],
+        correctAnswer: 1,
+        reasoning: "The resting membrane potential is characterized by high intracellular K+ and high extracellular Na+. The Na+/K+ ATPase actively pumps 3 Na+ out and 2 K+ in, maintaining these gradients. Critically, the membrane at rest is much more permeable to K+ than to Na+ due to the presence of numerous K+ leak channels. This outward leak of K+ primarily sets the negative resting potential. Voltage-gated channels are closed at rest. Ca2+ ATPase is involved in Ca2+ homeostasis, not directly establishing resting potential."
+    },
+    {
+        question: "Which characteristic of a protein is *most indicative* of its primary function being to bind to regulatory DNA sequences?",
+        options: [
+            "Presence of multiple transmembrane domains.",
+            "High content of hydrophobic amino acids.",
+            "Containment of a helix-turn-helix motif.",
+            "Ability to form large multimeric complexes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The helix-turn-helix (HTH) motif is a common and well-characterized DNA-binding domain found in many transcription factors and other regulatory proteins that interact directly with DNA sequences. Transmembrane domains are for membrane proteins. High hydrophobic content is common in membrane proteins or proteins that need to bury hydrophobic cores. Ability to form multimeric complexes is common for many proteins, including enzymes, structural proteins, and some DNA-binding proteins, but it's not the *most indicative* feature for DNA binding itself compared to a specific DNA-binding motif."
+    },
+    {
+        question: "A cell undergoes a process where membrane fragments containing specific proteins bud off from its surface, creating extracellular vesicles that can deliver their cargo to distant cells. This describes:",
+        options: [
+            "Phagocytosis.",
+            "Autophagy.",
+            "Exosome secretion.",
+            "Receptor-mediated endocytosis."
+        ],
+        correctAnswer: 2,
+        reasoning: "Exosome secretion involves the formation of multivesicular bodies (MVBs) within the cell, which then fuse with the plasma membrane to release small vesicles (exosomes) into the extracellular space. These exosomes contain proteins, lipids, and nucleic acids and can act as intercellular messengers. Phagocytosis and receptor-mediated endocytosis are forms of cellular *uptake*. Autophagy is an intracellular degradative process for cellular components. This question describes outward budding and delivery to other cells."
+    },
+    {
+        question: "A unique bacterial strain is discovered that uses a novel carbon fixation pathway. Instead of RuBisCO, it employs a highly efficient carboxylase that requires two ATP molecules and one NADPH per CO2 fixed, producing a C4 acid. How would this pathway *most likely* compare to the Calvin cycle in terms of energy expenditure for carbon fixation?",
+        options: [
+            "Less ATP and NADPH per CO2.",
+            "More ATP and less NADPH per CO2.",
+            "More ATP and more NADPH per CO2.",
+            "Comparable ATP and NADPH per CO2."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Calvin cycle (C3 pathway) requires 3 ATP and 2 NADPH per CO2 fixed to regenerate RuBP and reduce 3-PGA. The novel pathway described requires 2 ATP and 1 NADPH per CO2. Therefore, it uses *less* ATP and *less* NADPH per CO2 fixed compared to the standard Calvin cycle, making it more energetically efficient for CO2 fixation. This is a very difficult question that requires knowledge of the precise stoichiometry of the Calvin cycle and a quick comparison."
+    },
+    {
+        question: "Which feature of innate immune cells is *most critical* for discriminating between 'self' and 'non-self' pathogens without prior exposure?",
+        options: [
+            "Highly diverse T-cell receptors.",
+            "Specific antibodies recognizing pathogen epitopes.",
+            "Pattern recognition receptors (PRRs) detecting pathogen-associated molecular patterns (PAMPs).",
+            "Major Histocompatibility Complex (MHC) presentation."
+        ],
+        correctAnswer: 2,
+        reasoning: "Innate immunity functions without prior exposure, relying on germline-encoded receptors to recognize conserved molecular patterns unique to pathogens (PAMPs) or indicators of cell damage (DAMPs). Pattern Recognition Receptors (PRRs) like Toll-like receptors (TLRs) and NOD-like receptors (NLRs) are the key components for this 'self'/'non-self' discrimination in innate immunity. T-cell receptors and antibodies are features of adaptive immunity, requiring prior exposure and genetic rearrangement for diversity. MHC presentation is involved in presenting antigens to T cells for adaptive immunity."
+    },
+    {
+        question: "A species of plant is observed to grow exceptionally well in serpentine soils, which are notoriously deficient in essential nutrients and contain high levels of heavy metals. This adaptation is *most directly* attributed to:",
+        options: [
+            "Enhanced symbiotic relationships with mycorrhizal fungi.",
+            "Increased efficiency of nitrogen fixation by root nodules.",
+            "Unique ion transporters and chelators expressed in roots.",
+            "Accelerated senescence of metal-accumulating leaves."
+        ],
+        correctAnswer: 2,
+        reasoning: "Serpentine soils pose challenges due to both nutrient deficiency and heavy metal toxicity. While mycorrhizal fungi can help with nutrient uptake, the *most direct* adaptation to high heavy metal concentrations and specific nutrient deficiencies often involves specialized cellular mechanisms for managing these ions. This includes unique ion transporters (to exclude or selectively take up ions) and internal chelators (to bind and sequester toxic metals) within root cells or elsewhere in the plant, allowing it to tolerate and even thrive in such environments. Nitrogen fixation is irrelevant to heavy metal tolerance. Accelerated senescence is a detoxification strategy, but unique transporters/chelators are more fundamental for surviving and growing in the first place."
+    },
+    {
+        question: "A specific bacterial toxin directly targets and inactivates dynamin-related protein 1 (Drp1). Which cellular process would be *most immediately and severely* affected?",
+        options: [
+            "Mitochondrial fusion.",
+            "Mitochondrial fission.",
+            "Endosomal recycling.",
+            "Lysosomal biogenesis."
+        ],
+        correctAnswer: 1,
+        reasoning: "Dynamin-related protein 1 (Drp1) is a cytosolic GTPase that is recruited to the outer mitochondrial membrane and assembles into a spiral around the mitochondrion, constricting and ultimately driving mitochondrial fission (division). Inactivation of Drp1 would therefore most immediately and severely impair mitochondrial fission, leading to the accumulation of elongated, fused mitochondria. Mitochondrial fusion is mediated by mitofusins (Mfn1/2) and OPA1. Endosomal recycling involves other dynamin family members but not Drp1 directly. Lysosomal biogenesis is a distinct process."
+    },
+    {
+        question: "Which regulatory mechanism provides the *most rapid* and fine-tuned control over the activity of a metabolic pathway, without altering protein abundance?",
+        options: [
+            "Transcriptional control of enzyme synthesis.",
+            "Ubiquitin-mediated degradation of key enzymes.",
+            "Allosteric regulation of rate-limiting enzymes.",
+            "Nuclear receptor-mediated gene induction."
+        ],
+        correctAnswer: 2,
+        reasoning: "Allosteric regulation involves the binding of a molecule (effector) to an enzyme at a site other than the active site, inducing a conformational change that alters its activity. This mechanism is extremely rapid, occurring on milliseconds to seconds, and allows for immediate adjustments to metabolic flux in response to cellular conditions, without changing the amount of enzyme protein present. Transcriptional control, ubiquitin-mediated degradation, and nuclear receptor-mediated induction all affect protein *abundance* or *synthesis*, which are slower, longer-term regulatory mechanisms."
+    },
+    {
+        question: "In the context of the immune system, the phenomenon of 'original antigenic sin' *most accurately* describes:",
+        options: [
+            "The initial adaptive immune response being weaker than subsequent exposures.",
+            "The tendency for an individual to mount a stronger, but less effective, secondary immune response against variants of a pathogen previously encountered.",
+            "The failure of immune cells to differentiate into memory cells after primary exposure.",
+            "The rejection of transplanted organs due to prior sensitization against donor antigens."
+        ],
+        correctAnswer: 1,
+        reasoning: "Original antigenic sin describes a phenomenon where, upon subsequent exposure to a variant of a pathogen (e.g., influenza virus), the immune system preferentially recalls memory B cells and antibodies generated during the *first* exposure, even if these are less effective against the new variant. This can lead to a less optimal or 'substandard' immune response against the current infection, despite a robust memory response. Option 0 is incorrect as secondary responses are usually stronger. Option 2 describes a failure of memory, not original antigenic sin. Option 3 is about alloreactivity, not original antigenic sin."
+    },
+    {
+        question: "A cell develops a defect in its ability to correctly orient the mitotic spindle during cell division. This problem is *most directly* linked to a dysfunction in which cytoskeletal element and associated proteins?",
+        options: [
+            "Actin filaments and myosin motors.",
+            "Intermediate filaments and desmosomes.",
+            "Microtubules and motor proteins (e.g., dynein).",
+            "Microfilaments and focal adhesions."
+        ],
+        correctAnswer: 2,
+        reasoning: "The mitotic spindle is composed of microtubules. The orientation and positioning of the mitotic spindle are critically regulated by microtubules interacting with the cell cortex, often through the action of microtubule-associated motor proteins like dynein, which pull on astral microtubules. Defects in these components directly impair spindle orientation. Actin filaments form the contractile ring during cytokinesis and other structures but not the spindle itself. Intermediate filaments provide structural support. Microfilaments are another name for actin filaments."
+    },
+    {
+        question: "Which form of horizontal gene transfer in bacteria is *most inherently* dependent on the presence of bacteriophages?",
+        options: [
+            "Transformation.",
+            "Conjugation.",
+            "Transduction.",
+            "Natural competence."
+        ],
+        correctAnswer: 2,
+        reasoning: "Transduction is the process by which foreign DNA is introduced into a cell by a virus or viral vector (bacteriophage). The phage accidentally packages bacterial DNA instead of or in addition to its own and then injects it into another bacterium. Transformation is the uptake of naked DNA from the environment. Conjugation is direct transfer of DNA via a pilus between two bacterial cells. Natural competence is a state allowing transformation. Thus, transduction is uniquely phage-dependent."
+    },
+    {
+        question: "An emergent property of complex biological systems, such as consciousness in the brain or altruism in social insect colonies, *least* aligns with which philosophical approach to understanding biological phenomena?",
+        options: [
+            "Reductionism.",
+            "Holism.",
+            "Systems biology.",
+            "Emergentism."
+        ],
+        correctAnswer: 0,
+        reasoning: "Reductionism attempts to understand complex systems by breaking them down into their fundamental components and studying these parts in isolation. Emergent properties, by definition, arise from the interactions of components at a higher level of organization and cannot be fully predicted or explained by studying the individual parts alone. Holism, systems biology, and emergentism all embrace the idea that the whole is greater than the sum of its parts, making reductionism the approach *least* aligned with understanding emergent properties."
+    },
+    {
+        question: "Which modification to a transcription factor would *most directly* lead to its reduced binding affinity for target DNA sequences without altering its nuclear localization?",
+        options: [
+            "Phosphorylation of a residue within its activation domain.",
+            "Acetylation of a lysine residue within its DNA-binding domain.",
+            "Sumoylation preventing interaction with co-activators.",
+            "Ubiquitination targeting it for proteasomal degradation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The DNA-binding domain of a transcription factor is responsible for its specific interaction with DNA sequences. Acetylation of lysine residues, particularly within DNA-binding domains (e.g., helix-loop-helix motifs, basic regions), can neutralize the positive charge of lysine, reducing its electrostatic interaction with the negatively charged DNA backbone, thereby decreasing binding affinity. Phosphorylation of an activation domain affects transcriptional activity, not necessarily DNA binding. Sumoylation impacts protein-protein interactions. Ubiquitination targets for degradation, not directly affinity."
+    },
+    {
+        question: "A specific bacterial population experiences a sudden, dramatic increase in the frequency of a rare, deleterious allele. Which evolutionary force is *most likely* responsible for this observation?",
+        options: [
+            "Positive selection.",
+            "Gene flow.",
+            "Bottleneck effect.",
+            "Stabilizing selection."
+        ],
+        correctAnswer: 2,
+        reasoning: "The bottleneck effect is a sharp reduction in the size of a population due to environmental events (e.g., natural disaster, disease). This random reduction can drastically alter allele frequencies, including increasing the frequency of rare or even deleterious alleles, simply by chance, as the surviving population may not be representative of the original genetic diversity. Positive selection would increase beneficial alleles. Gene flow introduces or removes alleles from a population through migration. Stabilizing selection would reduce the frequency of extreme alleles."
+    },
+    {
+        question: "In eukaryotic cells, the passage of mRNA molecules from the nucleus to the cytoplasm is *most accurately* described as a process that:",
+        options: [
+            "Is entirely passive, driven by concentration gradients.",
+            "Requires specific RNA export receptors and GTP hydrolysis.",
+            "Occurs through regulated degradation of the nuclear pore complex.",
+            "Is strictly coupled to active translation within the nucleus."
+        ],
+        correctAnswer: 1,
+        reasoning: "mRNA export from the nucleus is a highly regulated and active process. It is mediated by specific mRNA export receptors (e.g., the mRNA exporter complex NXF1/NXT1) that bind to the mRNP (messenger ribonucleoprotein) and guide it through the nuclear pore complex. This process is energy-dependent, requiring GTP hydrolysis by RanGTPase for directional transport and recycling of transport factors. It is not passive, nor does it involve degradation of the NPC, and translation generally occurs in the cytoplasm, not the nucleus (with minor exceptions)."
+    },
+    {
+        question: "A newly synthesized protein destined for secretion contains both an N-terminal signal peptide and a single internal stop-transfer sequence. Where would this protein *most likely* be found after translation and targeting?",
+        options: [
+            "Completely within the ER lumen.",
+            "As a single-pass transmembrane protein in the ER membrane, N-terminus in lumen.",
+            "As a single-pass transmembrane protein in the ER membrane, C-terminus in lumen.",
+            "Integrated into the inner mitochondrial membrane."
+        ],
+        correctAnswer: 1,
+        reasoning: "An N-terminal signal peptide directs the ribosome to the ER and is usually cleaved, allowing the protein to enter the ER lumen. However, a 'stop-transfer sequence' acts as a transmembrane domain and halts translocation, anchoring the protein in the ER membrane. Since the N-terminal signal peptide initiated translocation into the lumen before the stop-transfer sequence encountered the translocon, the N-terminus will be in the ER lumen, and the protein will be a single-pass transmembrane protein. It would not be completely in the lumen (due to stop-transfer) or C-terminus in lumen (unless it was a C-terminal signal anchor). Mitochondria use different targeting sequences."
+    },
+    {
+        question: "Which factor is *least likely* to contribute to the maintenance of genetic variation within a large, randomly mating population?",
+        options: [
+            "Balancing selection favoring heterozygotes.",
+            "Frequency-dependent selection.",
+            "Mutation-selection balance.",
+            "Strong directional selection for a single advantageous allele."
+        ],
+        correctAnswer: 3,
+        reasoning: "Strong directional selection for a single advantageous allele actively *reduces* genetic variation by driving the advantageous allele to fixation (or near fixation), thus eliminating other alleles from the population. Balancing selection (like heterozygote advantage), frequency-dependent selection, and mutation-selection balance are all mechanisms that actively *maintain* genetic variation within a population by preventing the loss of alleles or promoting the persistence of multiple alleles."
+    },
+    {
+        question: "A plant cell is engineered to constitutively express high levels of aquaporins. What is the *most direct* consequence of this change on the cell's response to a hypotonic extracellular environment?",
+        options: [
+            "Reduced turgor pressure due to increased water efflux.",
+            "Accelerated water influx leading to faster cell lysis.",
+            "Increased cell wall rigidity limiting expansion.",
+            "Enhanced solute retention against osmotic gradients."
+        ],
+        correctAnswer: 1,
+        reasoning: "Aquaporins are water channels that facilitate the rapid movement of water across membranes. In a hypotonic environment (lower solute concentration outside the cell), water will rapidly move into the cell. Constitutive high expression of aquaporins would significantly increase the membrane's permeability to water, accelerating this influx. While plant cells have cell walls to prevent lysis, an *accelerated* influx would mean the cell reaches its maximum turgor and potential for rupture (lysis, though less common in plants than animal cells due to the wall) much faster. Reduced turgor or increased cell wall rigidity are incorrect. Enhanced solute retention is independent of aquaporins."
+    },
+    {
+        question: "Which regulatory protein's post-translational modification is *most central* to coordinating the G1-S phase transition in mammalian cells?",
+        options: [
+            "Cyclin B",
+            "CDK1",
+            "p53",
+            "Rb (Retinoblastoma protein)"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Retinoblastoma protein (Rb) is a key tumor suppressor that acts as a gatekeeper for the G1-S transition. In its unphosphorylated state, Rb binds to and inhibits E2F transcription factors, preventing the expression of S-phase genes. Phosphorylation of Rb by G1/S-CDK complexes (Cyclin D/CDK4/6 and Cyclin E/CDK2) inactivates it, releasing E2F and allowing S-phase entry. This phosphorylation is the *most central* post-translational modification for coordinating this transition. Cyclin B and CDK1 are primarily involved in the G2-M transition. p53 is a cell cycle checkpoint protein, not directly coordinating the transition itself, but rather halting it if damage occurs."
+    },
+    {
+        question: "The process of 'epigenetic drift' in aging human populations *most accurately* refers to:",
+        options: [
+            "Random changes in DNA sequence over time, leading to cancer.",
+            "Progressive increase in genetic mutations due to environmental factors.",
+            "Gradual, stochastic accumulation of epigenetic modifications, leading to phenotypic variability and disease susceptibility.",
+            "Systematic loss of telomeric sequences over successive cell divisions."
+        ],
+        correctAnswer: 2,
+        reasoning: "Epigenetic drift refers to the progressive, often random, accumulation of changes in DNA methylation patterns, histone modifications, and chromatin structure that occurs with aging. These changes lead to increased variability in gene expression between cells and individuals, contributing to age-related decline, phenotypic heterogeneity, and increased susceptibility to diseases like cancer, without altering the underlying DNA sequence. The other options describe genetic mutations, telomere shortening, or environmental effects on genetic mutations, not specifically epigenetic changes."
+    },
+    {
+        question: "Which characteristic of a lipid raft is *most crucial* for maintaining its structural and functional integrity within the cell membrane?",
+        options: [
+            "High concentration of phospholipids with unsaturated fatty acids.",
+            "Absence of cholesterol and sphingolipids.",
+            "Tight packing of saturated fatty acid chains of sphingolipids and cholesterol.",
+            "Peripheral membrane proteins forming a stable scaffold."
+        ],
+        correctAnswer: 2,
+        reasoning: "Lipid rafts are dynamic, ordered microdomains within the fluid cell membrane. Their structural integrity and stability are primarily attributed to the tight packing of cholesterol molecules with the longer, saturated fatty acid chains of sphingolipids. This creates a more ordered, less fluid region compared to the surrounding phospholipid bilayer. High concentrations of unsaturated fatty acids would make the membrane more fluid, not raft-like. Absence of cholesterol and sphingolipids would prevent raft formation. Peripheral proteins can associate with rafts but don't define their core structural integrity."
+    },
+    {
+        question: "A newly identified protein is shown to bind to the 3' untranslated region (3'UTR) of a specific mRNA, leading to its degradation. This protein is *most likely* acting as a component of which regulatory pathway?",
+        options: [
+            "RNA splicing machinery.",
+            "MicroRNA (miRNA) pathway.",
+            "RNA polymerase complex.",
+            "Ribosome-associated quality control."
+        ],
+        correctAnswer: 1,
+        reasoning: "MicroRNAs (miRNAs) are small non-coding RNAs that bind to specific sequences, typically in the 3' UTR of target mRNAs, to regulate gene expression. This binding often leads to mRNA degradation or translational repression. The description of a protein binding to the 3' UTR and causing degradation is characteristic of proteins involved in the miRNA-induced silencing complex (RISC), which mediates miRNA function. RNA splicing occurs in the nucleus. RNA polymerase is for transcription. Ribosome-associated quality control deals with nascent peptide chains, not specific mRNA degradation via 3' UTR binding."
+    },
+    {
+        question: "Which physiological adaptation in marine fish is *most critical* for maintaining osmoregulation in a hypertonic environment?",
+        options: [
+            "Excretion of large volumes of dilute urine.",
+            "Active uptake of salts through gills.",
+            "Drinking large amounts of seawater.",
+            "Secretion of salt through specialized gill cells."
+        ],
+        correctAnswer: 3,
+        reasoning: "Marine (saltwater) fish live in a hypertonic environment, meaning water constantly tends to leave their bodies, and salts tend to diffuse in. To counteract this, they constantly drink large amounts of seawater (to replace lost water), absorb water passively, and then actively excrete excess salts through specialized chloride cells in their gills. They excrete small volumes of concentrated urine. Active salt uptake would worsen the problem. Therefore, secretion of salt through gill cells is the most critical adaptation for osmoregulation."
+    },
+    {
+        question: "A population of organisms is found to contain individuals with three distinct phenotypes (e.g., small, medium, large size), where both small and large individuals have higher fitness than medium-sized individuals. This pattern of selection is known as:",
+        options: [
+            "Stabilizing selection.",
+            "Directional selection.",
+            "Disruptive selection.",
+            "Balancing selection."
+        ],
+        correctAnswer: 2,
+        reasoning: "Disruptive selection (or diversifying selection) favors individuals at both extremes of the phenotypic range over intermediate phenotypes. In this case, both small and large individuals have higher fitness than medium-sized individuals. This can lead to the divergence of populations into distinct morphs and, over time, potentially speciation. Stabilizing selection favors intermediates. Directional selection favors one extreme. Balancing selection is a broader term for mechanisms that maintain polymorphism, of which disruptive selection can be one, but disruptive selection specifically describes this pattern of fitness."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Narrations & Figurative Language ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-ENG-07';
+let quizData = quizData_WCW_ENG_07;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-ENG-07', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-ENG-07', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-ENG-07', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_ENG_07;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_ENG_07;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_ENG_07[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_ENG_07.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
